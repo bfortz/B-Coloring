@@ -10,6 +10,7 @@
 #include "../tools/Set.h"
 #include "../tools/Timer.h"
 #include "../solver/Solver.h"
+#include "../solver/Heuristic.h"
 #include "../solver/StdRepresentative.h"
 #include "Reader.h"
 

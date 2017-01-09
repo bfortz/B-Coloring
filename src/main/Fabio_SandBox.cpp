@@ -8,6 +8,7 @@
 #include "../tools/Graph.h"
 #include "../tools/Set.h"
 #include "../tools/Timer.h"
+#include "../solver/Heuristic.h"
 #include "../solver/Solver.h"
 #include "../solver/StdRepresentative.h"
 #include "Reader.h"

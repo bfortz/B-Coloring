@@ -12,7 +12,10 @@
 #include "../tools/Timer.h"
 #include "../tools/Graph.h"
 
-//A generic heuritic method to be used
+/*
+ * An generic class to handle the heuristics to the b-coloring problem
+ *
+ * */
 class Heuristic {
 private:
 
@@ -25,41 +28,88 @@ private:
 protected:
 	Graph* g; //the graph
 
-	// the method that solves the problem
+	/*
+	 * Completely or partialy color the graph associated to the current object
+	 * */
 	virtual void innerSolver() = 0;
 
-	// the method that solves the problem
+	/*
+	 * Completely or partialy color the subgraph associated to vertex set represented to active
+	 *
+	 * @param active a subset of the vertex set of the graph that will be colored
+	 * */
 	virtual void innerSolver(Set* active) = 0;
 
-	// the method that solves the problem
+	/*
+	 * Completely or partialy color the subgraph associated to vertex set represented to active
+	 * consider the colors given by colours for the vertices
+	 *
+	 * @param active a subset of the vertex set of the graph that will be colored
+	 * @param colours the adjacent matrix of a partial color for the complete graph, which may
+	 * or not contain the vertices in active
+	 * */
 	virtual void innerSolver(Set* active, Set** colours) = 0;
 
-	// an generic greedy algorithm to finished up coloring
+	/*
+	 * An generic greedy coloring algorithm, this algorithm expands any partial color to a complete color
+	 * */
 	void greedyAlgorithm();
 
-	// the b coloring algorithm to verify that the b-coloring indeed respect all the constraints
+	/*
+	 * An generic b coloring algorithm, this algorithm turns any coloring of the graph into a b-coloring
+	 * */
 	void algoB();
 
 public:
-	//Initializes the interface
+	/*
+	 * Build an heuristic to color the graph passed as input
+	 *
+	 * @param h the graph
+	 * */
 	Heuristic(Graph* h);
 
-	//Destroy the interface
+	/*
+	 * Destroy this object
+	 * */
 	virtual ~Heuristic();
 
-	//Interface to the solver
+	/* INTERFACE
+	 * Completely or partialy color the graph associated to the current object
+	 * */
 	void solve();
 
-	//Interface to the solver
+	/* INTERFACE
+	 * Completely or partialy color the subgraph associated to vertex set represented to active
+	 *
+	 * @param active a subset of the vertex set of the graph that will be colored
+	 * */
 	void solve(Set* active);
 
-	//Interface to the solver
+	/* INTERFACE
+	 * Completely or partialy color the subgraph associated to vertex set represented to active
+	 * consider the colors given by colours for the vertices
+	 *
+	 * @param active a subset of the vertex set of the graph that will be colored
+	 * @param colours the adjacent matrix of a partial color for the complete graph, which may
+	 * or not contain the vertices in active
+	 * */
 	void solve(Set* active, Set** colours);
 
-	//Retrive the optimal solution
+	/*
+	 * Retrivies the value of the optimal solution founded by the heuristic represented
+	 * by this objetc
+	 *
+	 * @return the value of the solution built by the concrete object
+	 * */
 	long getSolution();
 
-	//Retrive the elapsed time to solve the problem
+	/*
+	 * Retrivies the elapsed time spend in the calculus
+	 *  of the optimal solution founded by the heuristic represented
+	 * by this object
+	 *
+	 * @return the elapsed time in the computation of the solution built by the concrete object
+	 * */
 	float getElapsedTime();
 
 };

@@ -26,7 +26,7 @@ void Set::addAll(){
 }
 
 void Set::remove(long elem){
-	if(elem < size) elems[elem] = true;
+	if(elem < size) elems[elem] = false;
 }
 
 void Set::removeAll(){
@@ -65,4 +65,10 @@ long Set::firstElemAfter(long elem){
 	for(int i = elem; i < size; i++)
 		if(elems[i]) return i;
 	return size + 1;
+}
+
+long Set::count(){
+	int count = 0;
+	for(int i = 0; i < size; i++) if(elems[i]) count++;
+	return count;
 }

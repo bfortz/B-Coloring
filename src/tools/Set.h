@@ -51,6 +51,9 @@ public:
 
 	//returns the first element of the set greater ot equals to elem
 	long firstElemAfter(long elem);
+
+	//returns the number of bits settled in 1
+	long count();
 };
 
 #endif /* SRC_TOOLS_SET_H_ */

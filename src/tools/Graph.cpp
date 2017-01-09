@@ -26,25 +26,53 @@ Graph::~Graph(){
 
 //add an edge between u and v
 void Graph::addEdge(long v, long u){
-	edges[v]->add(u);
-	edges[u]->add(v);
+	if(v < n && u < n){
+		edges[v]->add(u);
+		edges[u]->add(v);
+		m++;
+	}
 }
 
 //add an edge between v and u
 void Graph::removeEdge(long v, long u){
-	edges[v]->remove(u);
-	edges[u]->remove(v);
+	if(v < n && u < n){
+		edges[v]->remove(u);
+		edges[u]->remove(v);
+		m--;
+	}
 }
 
 //verify if there is an edge between v and u
 bool Graph::hasEdge(long v, long u){
-	return edges[v]->isIn(u);
+	if(v < n && u < n) return edges[v]->isIn(u);
+	else return false;
 }
 
 //gets the neighboors of v
 Set* Graph::getNeig(long v){
 	Set* ret = new Set(n);
-	ret->unio(edges[v]);
+	if(v < n){
+		ret->unio(edges[v]);
+	}
 	return ret;
 }
 
+//gets the degree of the vertex v
+long Graph::degree(long v){
+	if(v < n) return edges[v]->count();
+	else return 0;
+}
+
+//print the graph
+void Graph::print(){
+	printf("NUMBER OF VERTICES: %ld \n", n);
+	printf("NUMBER OF EDGES: %ld \n", m);
+	printf("GRAPH:\n");
+	for(long int i = 0; i < n; i++){
+		printf("N(%ld):", i);
+		for(long int j = 0; j < n; j++){
+			if(hasEdge(i, j))printf("|%ld|", j);
+		}
+		printf("\n");
+	}
+}

@@ -7,28 +7,34 @@
 
 #include "Set.h"
 
+//build a emptyset with size "size"
 Set::Set(int sz){
 	size = sz;
 	elems = new bool[sz];
 	for(int i = 0; i < sz; i++) elems[i] = false;
 }
 
+//destroy the sets
 Set::~Set(){
 	delete elems;
 }
 
+//add elem to the set
 void Set::add(long elem){
 	if(elem < size) elems[elem] = true;
 }
 
+//add all posible elems
 void Set::addAll(){
 	for(int i = 0; i < size; i++) elems[i] = true;
 }
 
+//remove elem of the set
 void Set::remove(long elem){
 	if(elem < size) elems[elem] = false;
 }
 
+//remove all the elems of the set
 void Set::removeAll(){
 	for(int i = 0; i < size; i++) elems[i] = false;
 }
@@ -67,6 +73,7 @@ long Set::firstElemAfter(long elem){
 	return size + 1;
 }
 
+//returns the number of bits settled in 1
 long Set::count(){
 	int count = 0;
 	for(int i = 0; i < size; i++) if(elems[i]) count++;

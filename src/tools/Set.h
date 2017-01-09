@@ -9,50 +9,114 @@
 #define SRC_TOOLS_SET_H_
 
 /**
- * Representation of a set of integer numbers
+ * Representation of a set of integer numbers. The representation is assume
+ * to be a bit vector.
  * */
 class Set {
 private:
 	bool* elems;// binary representation
 	long size;//number of elements
 public:
-	//build a emptyset with size "size"
+	/*
+	 * Build a empty set representing the integers between 0 and size-1
+	 *
+	 * @param size the number of integers that can belong to the set.
+	 *
+	 * */
 	Set(int size);
 
-	//destroy the set
+	/*
+	 * Destructor
+	 * */
 	virtual ~Set();
 
-	//add elem to the set
+	/*
+	 * Add the integer elem to the current set,
+	 * if it belongs to the interval represented by this object(smaller than size)
+	 *
+	 * @param elem the element to be added in the current set
+	 * */
 	void add(long elem);
 
-	//add all posible elems
+	/*
+	 * Add all the integer in the interval 0 to size-1 to the set
+	 * */
 	void addAll();
 
-	//remove elem of the set
+	/*
+	 * Remove the integer elem in the current set,
+	 * if it belongs to the interval represented by this object(smaller than size)
+	 *
+	 * @param elem the element to be removed from the current set.
+	 * */
 	void remove(long elem);
 
-	//remove all the elems of the set
+	/*
+	 * Remove all the integer in the interval 0 to size-1 in the set
+	 * */
 	void removeAll();
 
-	//verify if the elem is in the set or not
+	/*
+	 * Verify if the integer elem is in the current set,
+	 *
+	 * @param elem the element to be tested
+	 *
+	 * @return true if elem belongs to the set and false otherwise.
+	 * */
 	bool isIn(long elem);
 
-	//intersects the current set with the set s
+	/*
+	 * Perform the intersection between the current set and the set given, assuming that
+	 * s has the same size of the current set, if it is not the case, it will produce an error.
+	 *
+	 * @param s the given set to be intersected with the current one.
+	 *
+	 * */
 	void inter(Set* s);
 
-	//subtracts the set s from the current set
+	/*
+	 * Perform the isubtraction between the current set and the set given, assuming that
+	 * s has the same size of the current set, if it is not the case, it will produce an error.
+	 *
+	 * @param s the given set to be subtracted with the current one.
+	 *
+	 * */
 	void subtr(Set* s);
 
-	//add all elements of the set s into the current set
+	/*
+	 * Perform the union between the current set and the set given, assuming that
+	 * s has the same size of the current set, if it is not the case, it will produce an error.
+	 *
+	 * @param s the given set to be joined with the current one.
+	 *
+	 * */
 	void unio(Set* s);
 
-	//returns the first element of the set
+	/*
+	 * Retrivies the first element of the set represented by the object.
+	 *
+	 * @return the first element of the set, if the set is empty it will return size+1.
+	 *
+	 * */
 	long firstElem();
 
-	//returns the first element of the set greater ot equals to elem
+	/*
+	 * Retrivies the first element of the set equals or bigger than the given element.
+	 *
+	 * @param elem the given element
+	 *
+	 * @return the first element of the set equals or bigger than the given element,
+	 * if such element does not exist, it will return size+1.
+	 *
+	 * */
 	long firstElemAfter(long elem);
 
-	//returns the number of bits settled in 1
+	/*
+	 * Count the number of elements in the current set represented by this object.
+	 *
+	 * @return the number of elements in the current set represented by this object.
+	 *
+	 * */
 	long count();
 };
 

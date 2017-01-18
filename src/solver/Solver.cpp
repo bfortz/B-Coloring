@@ -8,27 +8,30 @@
 #include "Solver.h"
 
 Solver::Solver(Graph* h){
-	//TODO
+	g = h;
+	tm = new Timer();
+	elapsedtm = 0.0;
+	solution = 0.0;
 }
 
 Solver::~Solver(){
-	//TODO
+	delete tm;
 }
 
 void Solver::build(){
-	//TODO
+	innerbuild();
 }
 
 void Solver::solve(){
-	//TODO
+	tm->start();
+	innerSolver();
+	elapsedtm = tm->stop();
 }
 
 long Solver::getSolution(){
-	//TODO
-	return 0;
+	return solution;
 }
 
 float Solver::getElapsedTime(){
-	//TODO
-	return 0;
+	return elapsedtm;
 }

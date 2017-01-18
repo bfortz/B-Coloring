@@ -75,6 +75,16 @@ public:
 	Set* getNeig(long v);
 
 	/*
+	 * Retrivies the antineighbourhood of the vertex given as input.
+	 *
+	 * @param v an integer smaller than n representing the vertex.
+	 *
+	 * @return an Set object representing the antineighbourhood of the vertex v. if
+	 * v is bigger than n or negative this functions will return an empty set.
+	 */
+	Set* getAntiNeig(long v);
+
+	/*
 	 * Retrivies the degree of the vertex given as input.
 	 *
 	 * @param v an integer smaller than n representing the vertex.

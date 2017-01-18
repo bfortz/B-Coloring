@@ -44,6 +44,10 @@ bool Set::isIn(long elem){
 	return elems[elem];
 }
 
+void Set::complement(){
+	for(int i = 0; i < size; i++) elems[i] = !elems[i];
+}
+
 //intersects the current set with the set s
 void Set::inter(Set* s){
 	for(int i = 0; i < size; i++) elems[i] &= s->elems[i];

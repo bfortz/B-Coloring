@@ -20,6 +20,8 @@ private:
 
 	Timer* tm;//the clock
 
+	float elapsedtm; // the elapsed time in the solution
+
 protected:
 	Graph* g; //the graph
 

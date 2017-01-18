@@ -75,6 +75,14 @@ public:
 	void inter(Set* s);
 
 	/*
+	 * Swaps for the complement of the current object.
+	 *
+	 * @param s the given set to be intersected with the current one.
+	 *
+	 * */
+	void complement();
+
+	/*
 	 * Perform the isubtraction between the current set and the set given, assuming that
 	 * s has the same size of the current set, if it is not the case, it will produce an error.
 	 *

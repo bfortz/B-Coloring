@@ -57,6 +57,16 @@ Set* Graph::getNeig(long v){
 	return ret;
 }
 
+//gets the antineighboors of v
+Set* Graph::getAntiNeig(long v){
+	Set* ret = new Set(n);
+	if(v < n){
+		ret->unio(edges[v]);
+	}
+	ret->complement();
+	return ret;
+}
+
 //gets the degree of the vertex v
 long Graph::degree(long v){
 	if(v < n) return edges[v]->count();

@@ -24,6 +24,14 @@ Graph::~Graph(){
 	delete edges;
 }
 
+long Graph::sizeE(){
+	return m;
+}
+
+long Graph::sizeV(){
+	return n;
+}
+
 //add an edge between u and v
 void Graph::addEdge(long v, long u){
 	if(v < n && u < n){

@@ -126,6 +126,41 @@ public:
 	 *
 	 * */
 	long count();
+
+	/*
+	 * Verifies if the current set represented by this object is empty.
+	 *
+	 * @return true if the current set represented by this object is empty and false otherwise.
+	 *
+	 * */
+	bool isEmpty();
+
+	/*
+	 * Verifies if the union of the given set with the current set represented by this object is empty.
+	 *
+	 * @return true if the union of the given set with the current set represented by this object is empty
+	 * and false otherwise.
+	 *
+	 * */
+	bool isUnionEmpty(Set* s);
+
+	/*
+	 * Verifies if the intersection of the given set with the current set represented by this object is empty.
+	 *
+	 * @return true if the intersection of the given set with the current set represented by this object is empty
+	 * and false otherwise.
+	 *
+	 * */
+	bool isIntersEmpty(Set* s);
+
+	/*
+	 * Verifies if the subtration of the given set with the current set represented by this object is empty.
+	 *
+	 * @return true if the subtratcion of the given set with the current set represented by this object is empty
+	 * and false otherwise.
+	 *
+	 * */
+	bool isSubtEmpty(Set* s);
 };
 
 #endif /* SRC_TOOLS_SET_H_ */

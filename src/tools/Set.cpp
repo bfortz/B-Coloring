@@ -83,3 +83,27 @@ long Set::count(){
 	for(int i = 0; i < size; i++) if(elems[i]) count++;
 	return count;
 }
+
+bool Set::isEmpty(){
+	bool isin = true;
+	for(int i = 0; i < size; i++) isin = !elems[i];
+	return isin;
+}
+
+bool Set::isUnionEmpty(Set* s){
+	bool ret = true;
+	for(int i = 0; i < size; i++) ret = !(elems[i] || s->elems[i]);
+	return ret;
+}
+
+bool Set::isIntersEmpty(Set* s){
+	bool ret = true;
+	for(int i = 0; i < size; i++) ret = !(elems[i] && s->elems[i]);
+	return ret;
+}
+
+bool Set::isSubtEmpty(Set* s){
+	bool ret = true;
+	for(int i = 0; i < size; i++) ret = !(elems[i] * s->elems[i]);
+	return ret;
+}

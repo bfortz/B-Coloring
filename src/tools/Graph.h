@@ -35,6 +35,22 @@ public:
 	virtual ~Graph();
 
 	/*
+	 * Retrivies the number of edges of the graph.
+	 *
+	 * @return the number of edges of the graph.
+	 *
+	 */
+	long sizeE();
+
+	/*
+	 * Retrivies the number of vertices of the graph.
+	 *
+	 * @return the number of vertices of the graph.
+	 *
+	 */
+	long sizeV();
+
+	/*
 	 * Add the edge (uv) to the graph. If both, u and v are smaller than n;
 	 * otherwise this function does nothing.
 	 *

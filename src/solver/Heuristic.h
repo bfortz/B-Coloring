@@ -17,7 +17,7 @@
  *
  * */
 class Heuristic {
-private:
+protected:
 
 	long szcl;// the number of colours used in this method
 
@@ -25,7 +25,10 @@ private:
 
 	Set** colours;// the adjacent matrix representing the given coloration
 
-protected:
+	long n;
+
+	float elapsedtm;
+
 	Graph* g; //the graph
 
 	/*

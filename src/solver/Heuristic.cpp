@@ -48,6 +48,7 @@ void Heuristic::greedyAlgorithm(){
 // the b coloring algorithm to verify that the b-coloring indeed respect all the constraints
 void Heuristic::algoB(){
 	Set* colenum = new Set(n);
+	Set* aux;
 
 	long v;
 
@@ -55,12 +56,15 @@ void Heuristic::algoB(){
 	bool bv;
 	long current;
 
+	//begin the search for the end
 	current = szcl;
 	while(current > 0){
+
 		colenum->removeAll();
 		colenum->unio(colours[current]);
 		v = 0;
 		bcolor = false;
+		//verify if the current color has a b-vertex
 		while(!colenum->isEmpty() && !bcolor){
 			bv = true;
 			v = colenum->firstElemAfter(v);
@@ -72,8 +76,33 @@ void Heuristic::algoB(){
 			}
 			if(bv) bcolor = true;
 		}
-		if(!bcolor){
 
+		//if the current color has no b-vetex, eliminate the color
+		if(!bcolor){
+			colenum->removeAll();
+			colenum->unio(colours[current]);
+			v = 0;
+			v = colenum->firstElemAfter(v);
+			colenum->remove(v);
+			bv = true;
+			for(int j = 0; j < szcl && bv; j++){
+				if(current!=j){
+					if(g->getNeig(v)->isIntersEmpty(colours[j])){
+						colours[j]->add(v);
+						colours[current]->remove(v);
+						bv = false;
+					}
+				}
+			}
+
+			//rearrange the vector of color classes
+			aux = colours[current];
+			for(int i = current; i < szcl-1; i++){
+				colours[i] = colours[i+1];
+			}
+			colours[szcl-1] = aux;
+			szcl--;
+			current--;
 		}
 	}
 

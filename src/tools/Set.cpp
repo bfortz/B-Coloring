@@ -45,7 +45,9 @@ bool Set::isIn(long elem){
 }
 
 void Set::complement(){
-	for(int i = 0; i < size; i++) elems[i] = !elems[i];
+	for(int i = 0; i < size; i++){
+		elems[i] = !elems[i];
+	}
 }
 
 //intersects the current set with the set s
@@ -86,24 +88,43 @@ long Set::count(){
 
 bool Set::isEmpty(){
 	bool isin = true;
-	for(int i = 0; i < size; i++) isin = !elems[i];
+	for(int i = 0; i < size; i++){
+		if(elems[i]) isin = false;
+	}
 	return isin;
 }
 
 bool Set::isUnionEmpty(Set* s){
 	bool ret = true;
-	for(int i = 0; i < size; i++) ret = !(elems[i] || s->elems[i]);
+	for(int i = 0; i < size; i++){
+		if(elems[i] || s->elems[i])
+			ret = false ;
+	}
 	return ret;
 }
 
 bool Set::isIntersEmpty(Set* s){
 	bool ret = true;
-	for(int i = 0; i < size; i++) ret = !(elems[i] && s->elems[i]);
+	for(int i = 0; i < size; i++){
+		if(elems[i] && s->elems[i])
+			ret = false;
+	}
 	return ret;
 }
 
 bool Set::isSubtEmpty(Set* s){
 	bool ret = true;
-	for(int i = 0; i < size; i++) ret = !(elems[i] * s->elems[i]);
+	for(int i = 0; i < size; i++){
+		if(elems[i] * s->elems[i])
+			ret = false;
+	}
 	return ret;
+}
+
+void Set::print(){
+	printf("SET size = %ld\n", size);
+	for(long i = 0; i < size; i++){
+		if(elems[i]) printf(" %ld ", i);
+	}
+	printf("\n");
 }

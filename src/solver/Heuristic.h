@@ -11,6 +11,7 @@
 #include "../tools/Set.h"
 #include "../tools/Timer.h"
 #include "../tools/Graph.h"
+#include <cstdio>
 
 /*
  * An generic class to handle the heuristics to the b-coloring problem
@@ -35,23 +36,6 @@ protected:
 	 * Completely or partialy color the graph associated to the current object
 	 * */
 	virtual void innerSolver() = 0;
-
-	/*
-	 * Completely or partialy color the subgraph associated to vertex set represented to active
-	 *
-	 * @param active a subset of the vertex set of the graph that will be colored
-	 * */
-	virtual void innerSolver(Set* active) = 0;
-
-	/*
-	 * Completely or partialy color the subgraph associated to vertex set represented to active
-	 * consider the colors given by colours for the vertices
-	 *
-	 * @param active a subset of the vertex set of the graph that will be colored
-	 * @param colours the adjacent matrix of a partial color for the complete graph, which may
-	 * or not contain the vertices in active
-	 * */
-	virtual void innerSolver(Set* active, Set** colours) = 0;
 
 	/*
 	 * An generic greedy coloring algorithm, this algorithm expands any partial color to a complete color
@@ -81,23 +65,6 @@ public:
 	 * */
 	void solve();
 
-	/* INTERFACE
-	 * Completely or partialy color the subgraph associated to vertex set represented to active
-	 *
-	 * @param active a subset of the vertex set of the graph that will be colored
-	 * */
-	void solve(Set* active);
-
-	/* INTERFACE
-	 * Completely or partialy color the subgraph associated to vertex set represented to active
-	 * consider the colors given by colours for the vertices
-	 *
-	 * @param active a subset of the vertex set of the graph that will be colored
-	 * @param colours the adjacent matrix of a partial color for the complete graph, which may
-	 * or not contain the vertices in active
-	 * */
-	void solve(Set* active, Set** colours);
-
 	/*
 	 * Retrivies the value of the optimal solution founded by the heuristic represented
 	 * by this objetc
@@ -114,6 +81,9 @@ public:
 	 * @return the elapsed time in the computation of the solution built by the concrete object
 	 * */
 	float getElapsedTime();
+
+	/* A printer for this object */
+	void print();
 
 };
 

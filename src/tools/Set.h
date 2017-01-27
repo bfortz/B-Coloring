@@ -8,6 +8,8 @@
 #ifndef SRC_TOOLS_SET_H_
 #define SRC_TOOLS_SET_H_
 
+#include<cstdio>
+
 /**
  * Representation of a set of integer numbers. The representation is assume
  * to be a bit vector.
@@ -161,6 +163,9 @@ public:
 	 *
 	 * */
 	bool isSubtEmpty(Set* s);
+
+	/* An printer to this object */
+	void print();
 };
 
 #endif /* SRC_TOOLS_SET_H_ */

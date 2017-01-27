@@ -57,8 +57,8 @@ void Heuristic::algoB(){
 	long current;
 
 	//begin the search for the end
-	current = szcl;
-	while(current > 0){
+	current = szcl-1;
+	while(current >= 0){
 
 		colenum->removeAll();
 		colenum->unio(colours[current]);
@@ -71,27 +71,34 @@ void Heuristic::algoB(){
 			colenum->remove(v);
 			for(int j = 0; j < szcl; j++){
 				if(current!=j){
-					if(g->getNeig(v)->isIntersEmpty(colours[j])) bv = false;
+					if(g->getNeig(v)->isIntersEmpty(colours[j])){
+						bv = false;
+					}
 				}
 			}
 			if(bv) bcolor = true;
 		}
 
+		int j = 0;
 		//if the current color has no b-vetex, eliminate the color
 		if(!bcolor){
 			colenum->removeAll();
 			colenum->unio(colours[current]);
 			v = 0;
-			v = colenum->firstElemAfter(v);
-			colenum->remove(v);
-			bv = true;
-			for(int j = 0; j < szcl && bv; j++){
-				if(current!=j){
-					if(g->getNeig(v)->isIntersEmpty(colours[j])){
-						colours[j]->add(v);
-						colours[current]->remove(v);
-						bv = false;
+			while(!colenum->isEmpty()){
+				v = colenum->firstElemAfter(v);
+				colenum->remove(v);
+				bv = true;
+				j = 0;
+				while(bv && j < szcl){
+					if(current!=j){
+						if(g->getNeig(v)->isIntersEmpty(colours[j])){
+							colours[j]->add(v);
+							colours[current]->remove(v);
+							bv = false;
+						}
 					}
+					j++;
 				}
 			}
 
@@ -102,8 +109,8 @@ void Heuristic::algoB(){
 			}
 			colours[szcl-1] = aux;
 			szcl--;
-			current--;
 		}
+		current--;
 	}
 
 
@@ -138,20 +145,6 @@ void Heuristic::solve() {
 	elapsedtm = tm->stop();
 }
 
-//Interface to the solver
-void Heuristic::solve(Set* active) {
-	tm->start();
-	innerSolver(active);
-	elapsedtm = tm->stop();
-}
-
-//Interface to the solver
-void Heuristic::solve(Set* active, Set** colours2) {
-	tm->start();
-	innerSolver(active, colours2);
-	elapsedtm = tm->stop();
-}
-
 //Retrive the optimal solution
 long Heuristic::getSolution() {
 	return szcl;
@@ -160,4 +153,15 @@ long Heuristic::getSolution() {
 //Retrive the elapsed time to solve the problem
 float Heuristic::getElapsedTime() {
 	return elapsedtm;
+}
+
+void Heuristic::print(){
+	printf("NUMBER OF COLORS = %ld \n", szcl);
+	for(long int i = 0; i < szcl; i++){
+		printf("COLOR %ld = ", i);
+		for(long int j = 0; j < n; j++){
+			if(colours[i]->isIn(j)) printf(" %ld ", j);
+		}
+		printf("\n");
+	}
 }

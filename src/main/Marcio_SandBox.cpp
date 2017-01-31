@@ -13,6 +13,7 @@
 #include "../solver/Heuristic.h"
 #include "../solver/BasicHeuristic.h"
 #include "../solver/StdRepresentative.h"
+#include "../solver/ImpRepresentative.h"
 #include "Reader.h"
 #include <cstdio>
 
@@ -35,11 +36,13 @@ int main(){
 
 	g->print();
 
-	BasicHeuristic* bh = new BasicHeuristic(g);
+	ImpRepresentative* rep = new ImpRepresentative(g, 0);
 
-	bh->solve();
+	rep->build();
 
-	bh->print();
+	rep->solve();
+
+	printf("Solution = %d in time = %f \n", rep->getSolution(), rep->getElapsedTime());
 
 	return 0;
 }

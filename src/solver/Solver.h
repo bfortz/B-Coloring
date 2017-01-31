@@ -14,7 +14,7 @@
 
 //This is an interface commun to all the method to solve the problem of b-coloring
 class Solver {
-private:
+protected:
 
 	long solution;// the solution
 
@@ -22,7 +22,6 @@ private:
 
 	float elapsedtm; // the elapsed time in the solution
 
-protected:
 	Graph* g; //the graph
 
 	virtual void innerbuild() = 0; //the real builder

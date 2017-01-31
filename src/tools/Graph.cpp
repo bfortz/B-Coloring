@@ -72,6 +72,7 @@ Set* Graph::getAntiNeig(long v){
 		ret->unio(edges[v]);
 	}
 	ret->complement();
+	ret->remove(v);
 	return ret;
 }
 

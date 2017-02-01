@@ -14,23 +14,45 @@
 //represents a clock for the problems
 class Timer {
 private:
+	//The initial time
 	struct timeval  clockinit;
+
+	//the final time
 	struct timeval  clockend;
+
+	//the time zone
 	struct timezone tz;
+
+	//
 	float seconds;
 public:
-	//build a clock
+	/*
+	 * The basic constructor
+	 * */
 	Timer();
 
+	/*
+	 * The basic destructor
+	 * */
 	virtual ~Timer();
 
-	//starts the clock
+	/*
+	 * Initializes the clock
+	 * */
 	void start();
 
-	//pause and return the elapsed time in seconds
+	/*
+	 * Pause the clock and return the elapsed time so far.
+	 *
+	 * @return the elapsed time so far.
+	 * */
 	float pause();
 
-	//stop and return the elapsed time in seconds
+	/*
+	 * Stop the clock and return the elapsed time so far.
+	 *
+	 * @return the elapsed time so far.
+	 * */
 	float stop();
 };
 

@@ -16,35 +16,65 @@
 class Solver {
 protected:
 
-	long solution;// the solution
+	// the solution
+	long solution;
 
-	Timer* tm;//the clock
+	//the clock
+	Timer* tm;
 
-	float elapsedtm; // the elapsed time in the solution
+	// the elapsed time in the solution
+	float elapsedtm;
 
-	Graph* g; //the graph
+	//the graph
+	Graph* g;
 
-	virtual void innerbuild() = 0; //the real builder
+	/*
+	 * Builds the problem concretly
+	 * */
+	virtual void innerbuild() = 0;
 
-	virtual void innerSolver() = 0; // the method that solves the problem
+	/*
+	 * Concretely solves the problem
+	 *
+	 * */
+	virtual void innerSolver() = 0;
 
 public:
-	//Initializes the interface
+	/**
+	 * Initialize the object to solve the b-coloring problem in a given graph
+	 *
+	 * @param h: the given graph
+	 * */
 	Solver(Graph* h);
 
-	//Destroy the interface
+	/**
+	 * An Destructor for this class
+	 * */
 	virtual ~Solver();
 
-	//Interface build
+	/*
+	 * Interface for the biuld method. Initializes the inner variables of this class.
+	 * */
 	void build();
 
-	//Interface Solver
+	/*
+	 * Interface for the solve method. Solves the problem and update the variable solution and
+	 * the elapsed time.
+	 * */
 	void solve();
 
-	//Retrive the optimal solution
+	/*
+	 * Retrivies the optimal solution computed by the last call of the method solve().
+	 *
+	 * @return the the optimal solution computed by the last call of the method solve().
+	 * */
 	long getSolution();
 
-	//Retrive the elapsed time to solve the problem
+	/*
+	 * Retrivies the elapsed time by the last call of the method solve() in seconds.
+	 *
+	 * @return the elapsed time by the last call of the method solve() in seconds.
+	 * */
 	float getElapsedTime();
 };
 

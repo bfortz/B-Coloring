@@ -1,10 +1,10 @@
 #cplex addresses!!!!
 #folder include
-INCCPLEX= -I/opt/ibm/ILOG/CPLEX_Studio1251/cplex/include/
+INCCPLEX= -I/opt/ibm/ILOG/CPLEX_Studio127/cplex/include/
 #folder lib
-LIBCPLEX= -L/opt/ibm/ILOG/CPLEX_Studio1251/cplex/lib/x86-64_sles10_4.1/static_pic/ -m64 -lcplex -lm -lpthread
+LIBCPLEX= -L/opt/ibm/ILOG/CPLEX_Studio127/cplex/lib/x86-64_linux/static_pic/ -m64 -lcplex -lm -lpthread
 #folder concert
-CONCPLEX= -I/opt/ibm/ILOG/CPLEX_Studio1251/concert/include/ 
+CONCPLEX= -I/opt/ibm/ILOG/CPLEX_Studio127/concert/include/ 
 TDIR=src/tools
 SDIR=src/solver
 MDIR=src/main

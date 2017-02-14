@@ -10,8 +10,15 @@
 
 #include <cstdio>
 #include <cstdlib>
-
+#include <fstream>
+#include <string>
+#include <istream>
+#include <iostream>
+#include <sstream>
+#include <fstream>
 #include "../tools/Graph.h"
+
+using namespace std;
 
 class Reader {
 public:
@@ -19,7 +26,7 @@ public:
 
 	virtual ~Reader();
 
-	static Graph* read(FILE*);
+        Graph * read(std::istream& dimacs);
 };
 
 #endif /* SRC_MAIN_READER_H_ */

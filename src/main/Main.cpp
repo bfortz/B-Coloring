@@ -16,6 +16,15 @@
 
 int main(){
 	printf("Main!\n");
+
+
+  std::ifstream ifs ("myciel5.col", std::ifstream::in);
+
+	Reader myReader;
+
+	Graph * myGraph = myReader.read(ifs);
+
+myGraph->print();
 	return 0;
 }
 

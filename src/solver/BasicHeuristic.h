@@ -13,13 +13,30 @@
 
 class BasicHeuristic: public Heuristic {
 protected:
-
+	// the unceolored vertices
 	Set* uncolored;
 
+	/*
+	 * Order the vertices of the graph according to their degree.
+	 * */
 	void orderVertices(long* ov, long* dg);
 
+	/*
+	 * Select the vertices that are neighbours to at least two b-vertices.
+	 *
+	 * @param a pointer to be fulfilled with the list L.
+	 *
+	 * @return the cardinality of the list L.
+	 *
+	 * */
 	long selectLlist(long* llist);
 
+	/*
+	 * Select the vertices that are suitable candidates to be b-vertices.
+	 *
+	 * @return the cardinality of the list of b-vertices candidates
+	 *
+	 * */
 	long choseBV(long* ov, long* dg);
 
 	/*
@@ -28,8 +45,16 @@ protected:
 	void innerSolver();
 
 public:
+	/*
+	 * Build an heuristic to color the graph passed as input
+	 *
+	 * @param h the graph
+	 * */
 	BasicHeuristic(Graph* h);
 
+	/*
+	 * Destroy this object
+	 * */
 	virtual ~BasicHeuristic();
 };
 

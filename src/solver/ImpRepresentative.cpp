@@ -17,10 +17,14 @@ void ImpRepresentative::innerbuild(){
 			x[i][j] = -1;
 		}
 	}
+	//printf("INIT OK!\n");
+	//getchar();
 
 	char name[100];
 	for(int i = 0; i < n; i++){
 		if(g->degree(i) >= lb - 1){
+			//printf("vertice %d passed \n", i);
+			//getchar();
 			x[i][i] = var++;
 			sprintf(name, "x[%d][%d]", i+1, i+1);
 			addBinVar(1.0, name);
@@ -33,12 +37,16 @@ void ImpRepresentative::innerbuild(){
 			}
 		}
 	}
+	//printf("BUILD OK!\n");
+	//getchar();
 
 	Set* visited = new Set(n);
 	long u, w;
 	Set* mark = new Set(n);
 	for(int v = 0; v < n; v++){
 		addRepresentativeConst(v);
+		//printf("Representative OK for %d\n", v);
+		//getchar();
 		visited->removeAll();
 		visited->unio(g->getAntiNeig(v));
 		u = 0;
@@ -121,7 +129,7 @@ void ImpRepresentative::addEdgeConst(long v, long u, long w){
 
 	int rmatbeg[2] = {0, 2};
 
-	CPXaddrows(env, lp, 0, 1, 3, &rhs, &sense, rmatbeg,rmatind, rmatval, NULL, NULL);
+	if(x[v][v] >= 0)CPXaddrows(env, lp, 0, 1, 3, &rhs, &sense, rmatbeg,rmatind, rmatval, NULL, NULL);
 }
 
 void ImpRepresentative::addSingleVConst(long v, long u){
@@ -134,7 +142,7 @@ void ImpRepresentative::addSingleVConst(long v, long u){
 
 	int rmatbeg[2] = {0, 1};
 
-	CPXaddrows(env, lp, 0, 1, 2, &rhs, &sense, rmatbeg,rmatind, rmatval, NULL, NULL);
+	if(x[v][v] >= 0)CPXaddrows(env, lp, 0, 1, 2, &rhs, &sense, rmatbeg,rmatind, rmatval, NULL, NULL);
 }
 
 void ImpRepresentative::addRepresentativeConst(long v){
@@ -146,8 +154,10 @@ void ImpRepresentative::addRepresentativeConst(long v){
 	int rmatind[n];
 	double rmatval[n];
 
-	rmatind[nzcnt] = x[v][v];
-	rmatval[nzcnt++] = 1.0;
+	if(x[v][v] >= 0){
+		rmatind[nzcnt] = x[v][v];
+		rmatval[nzcnt++] = 1.0;
+	}
 	for(int i = 0; i < n; i++){
 		if(i != v && !g->hasEdge(v, i) && x[i][i] >= 0){
 			rmatind[nzcnt] = x[i][v];
@@ -183,7 +193,7 @@ void ImpRepresentative::addBcolConstraint(long v, long u){
 
 	int rmatbeg[2] = {0, nzcnt - 1};
 
-	CPXaddrows(env, lp, 0, 1, nzcnt, &rhs, &sense, rmatbeg,rmatind, rmatval, NULL, NULL);
+	if(x[v][v] >= 0 && x[u][u] >= 0)CPXaddrows(env, lp, 0, 1, nzcnt, &rhs, &sense, rmatbeg,rmatind, rmatval, NULL, NULL);
 }
 
 ImpRepresentative::ImpRepresentative(Graph* h, long lnb): Solver(h){

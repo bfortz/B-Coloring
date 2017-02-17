@@ -26,7 +26,7 @@ public:
 
 	virtual ~Reader();
 
-        Graph * read(std::istream& dimacs);
+    Graph * read(std::istream& dimacs);
 };
 
 #endif /* SRC_MAIN_READER_H_ */

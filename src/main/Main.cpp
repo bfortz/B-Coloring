@@ -12,19 +12,28 @@
 #include "../solver/Solver.h"
 #include "../solver/Heuristic.h"
 #include "../solver/StdRepresentative.h"
+#include "../solver/ImpRepresentative.h"
 #include "Reader.h"
 
 int main(){
 	printf("Main!\n");
 
 
-  std::ifstream ifs ("myciel5.col", std::ifstream::in);
+	std::ifstream ifs ("instances/myciel5.col", std::ifstream::in);
 
 	Reader myReader;
 
 	Graph * myGraph = myReader.read(ifs);
+	myGraph->print();
 
-myGraph->print();
+	ImpRepresentative* formulation = new ImpRepresentative(myGraph, 0);
+
+	formulation->build();
+	formulation->solve();
+
+	printf("Solution = %ld \n", formulation->getSolution());
+
+	//myGraph->print();
 	return 0;
 }
 

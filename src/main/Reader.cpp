@@ -39,13 +39,13 @@ Graph* Reader::read(std::istream& dimacs){
 			}
 			break;
                 case 'e':                     
-{
-iss >> from >> to;
- myGraph->addEdge(from-1, to-1);
-}
-                        break;
+                	{
+                		iss >> from >> to;
+                		myGraph->addEdge(from-1, to-1);
+                	}
+                   break;
                 default: 
-                    return false;
+                    return NULL;
             }
         }
     }

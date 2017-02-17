@@ -17,24 +17,17 @@
 #include "Reader.h"
 #include <cstdio>
 
-int main(){
+int main(int argc, char **argv ){
+
+
 	printf("Marcio's SandBox\n");
 
-	Graph* g = new Graph(6);
+	printf("testing graph : %s", argv[1]);
+	std::ifstream ifs (argv[1], std::ifstream::in);
 
-	g->addEdge(0, 1);
+	Reader myReader;
 
-	g->addEdge(1, 2);
-
-	g->addEdge(2, 3);
-
-	g->addEdge(3, 4);
-
-	g->addEdge(4, 5);
-
-	g->addEdge(5, 0);
-
-	g->print();
+	Graph * g = myReader.read(ifs);
 
 	ImpRepresentative* rep = new ImpRepresentative(g, 0);
 
@@ -42,7 +35,7 @@ int main(){
 
 	rep->solve();
 
-	printf("Solution = %d in time = %f \n", rep->getSolution(), rep->getElapsedTime());
+	printf("Solution = %ld in time = %f \n", rep->getSolution(), rep->getElapsedTime());
 
 	return 0;
 }

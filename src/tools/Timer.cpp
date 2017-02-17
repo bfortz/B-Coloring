@@ -15,6 +15,7 @@ Timer::~Timer(){}
 
 //Initializes the clock
 void Timer::start(){
+	seconds = 0;
 	gettimeofday(&clockinit, &tz);
 }
 

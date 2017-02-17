@@ -11,7 +11,6 @@
 #include "../tools/Timer.h"
 #include "../solver/Solver.h"
 #include "../solver/Heuristic.h"
-#include "../solver/StdRepresentative.h"
 #include "../solver/ImpRepresentative.h"
 #include "Reader.h"
 

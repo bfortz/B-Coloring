@@ -12,7 +12,6 @@
 #include "../solver/Solver.h"
 #include "../solver/Heuristic.h"
 #include "../solver/BasicHeuristic.h"
-#include "../solver/StdRepresentative.h"
 #include "../solver/ImpRepresentative.h"
 #include "Reader.h"
 #include <cstdio>
@@ -29,7 +28,11 @@ int main(int argc, char **argv ){
 
 	Graph * g = myReader.read(ifs);
 
-	ImpRepresentative* rep = new ImpRepresentative(g, 0);
+	g->print();
+
+	int limit  = atoi(argv[2]);
+
+	ImpRepresentative* rep = new ImpRepresentative(g, limit);
 
 	rep->build();
 

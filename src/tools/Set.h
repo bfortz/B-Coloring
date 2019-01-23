@@ -1,9 +1,4 @@
-/*
- * Set.h
- *
- *  Created on: 19 de dez de 2016
- *      Author: marcio
- */
+
 
 #ifndef SRC_TOOLS_SET_H_
 #define SRC_TOOLS_SET_H_

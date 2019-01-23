@@ -1,9 +1,3 @@
-/*
- * Solver.h
- *
- *  Created on: 19 de dez de 2016
- *      Author: marcio
- */
 
 #include "../tools/Graph.h"
 #include "../tools/Timer.h"

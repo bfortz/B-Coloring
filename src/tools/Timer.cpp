@@ -1,9 +1,4 @@
-/*
- * Timer.cpp
- *
- *  Created on: 26/06/2014
- *      Author: santosma
- */
+
 
 #include "Timer.h"
 

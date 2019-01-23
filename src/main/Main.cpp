@@ -1,9 +1,4 @@
-/*
- * Main.cpp
- *
- *  Created on: 19 de dez de 2016
- *      Author: marcio
- */
+
 
 
 #include "../tools/Graph.h"
@@ -18,7 +13,7 @@ int main(){
 	printf("Main!\n");
 
 
-	std::ifstream ifs ("instances/myciel5.col", std::ifstream::in);
+	std::ifstream ifs ("bin/dimacs/myciel2.col", std::ifstream::in);
 
 	Reader myReader;
 

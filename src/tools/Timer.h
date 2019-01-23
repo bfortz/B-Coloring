@@ -1,9 +1,3 @@
-/*
- * Timer.h
- *
- *  Created on: 26/06/2014
- *      Author: santosma
- */
 
 #ifndef TIMER_H_
 #define TIMER_H_

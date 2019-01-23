@@ -1,9 +1,4 @@
-/*
- * BasicHeuristic.h
- *
- *  Created on: 26 de jan de 2017
- *      Author: marcio
- */
+
 
 #ifndef SRC_SOLVER_BASICHEURISTIC_H_
 #define SRC_SOLVER_BASICHEURISTIC_H_

@@ -1,9 +1,3 @@
-/*
- * BasicHeuristic.cpp
- *
- *  Created on: 26 de jan de 2017
- *      Author: marcio
- */
 
 #include "BasicHeuristic.h"
 

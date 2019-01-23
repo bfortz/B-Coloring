@@ -1,9 +1,4 @@
-/*
- * Heuristic.h
- *
- *  Created on: 8 de jan de 2017
- *      Author: mcsma
- */
+
 
 #ifndef SRC_SOLVER_HEURISTIC_H_
 #define SRC_SOLVER_HEURISTIC_H_

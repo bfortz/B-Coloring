@@ -1,14 +1,9 @@
-/*
- * ImpRepresentative.h
- *
- *  Created on: 8 de jan de 2017
- *      Author: mcsma
- */
+
 
 #ifndef SRC_SOLVER_IMPREPRESENTATIVE_H_
 #define SRC_SOLVER_IMPREPRESENTATIVE_H_
 
-#include <ilcplex/cplex.h>
+#include </opt/ibm/ILOG/CPLEX_Studio127/opl/include/ilcplex/cplex.h>
 #include <stdlib.h>
 #include <string.h>
 #include "Solver.h"

@@ -1,9 +1,3 @@
-/*
- * Reader.h
- *
- *  Created on: 19 de dez de 2016
- *      Author: marcio
- */
 
 #ifndef SRC_MAIN_READER_H_
 #define SRC_MAIN_READER_H_

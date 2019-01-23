@@ -1,9 +1,4 @@
-/*
- * Graph.cpp
- *
- *  Created on: 19 de dez de 2016
- *      Author: marcio
- */
+
 
 #include "Graph.h"
 

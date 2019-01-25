@@ -10,7 +10,7 @@
 #include "Reader.h"
 
 int main(){
-	printf("Main!\n");
+	printf("Main: B-Color!\n");
 
 
 	std::ifstream ifs ("bin/dimacs/myciel2.col", std::ifstream::in);
